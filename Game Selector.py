@@ -18,26 +18,31 @@ def choosegame(listofgames):
 print("Welcome to Poonanji's game selector. For a list of commands, type 'help'.\nFirst, create a new list. ")
 currentlist = newlist()
 while 1 == 1 : 
-    userinput = input("Enter command: ")
+        if len(currentlist) < 2:
+            print("You need more than one game in your list.")
+            currentlist = newlist()
+            
+        else:
+            userinput = input("Enter command: ")
 
-    if userinput == "help":
-        print("Here's a list of commands:\nnew list\nchoose game\nexit" )
+            if userinput == "help":
+                print("Here's a list of commands:\nnew\nchoose\nexit" )
 
-    elif userinput == "new list":
-        currentlist = newlist()
+            elif userinput == "new":
+                currentlist = newlist()
 
-    elif userinput == "choose game":
-        veto = "y"
-        while veto == "y":
-            selectedGame = choosegame(currentlist)
-            veto = input("Does anyone veto " + selectedGame + " ? y/n ")
-            if veto == "y":
-                    makenewlistquestion = input("Select from a new list? y/n ")
-                    if makenewlistquestion == "y":
-                        currentlist = newlist()
+            elif userinput == "choose":
+                veto = "y"
+                while veto == "y":
+                    selectedGame = choosegame(currentlist)
+                    veto = input("Does anyone veto " + selectedGame + " ? y/n ")
+                    if veto == "y":
+                            makenewlistquestion = input("Select from a new list? y/n ")
+                            if makenewlistquestion == "y":
+                                currentlist = newlist()
     
-    elif userinput == "exit":
-        exit()
+            elif userinput == "exit":
+                exit()
         
 
 
