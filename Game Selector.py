@@ -1,55 +1,45 @@
 import random
 
-def newlist():
-    gameslist = []
-    numberOfGames = input("How many games do you want to pick from? ")
-    gamesnumber = int(numberOfGames)
+def newList():
+    gamesList = []
+    numberOfGames = input("\nHow many games do you want to pick from? ")
+    gamesNumber = int(numberOfGames)
 
-    for i in range(gamesnumber):
-         gameslist.append(input("Enter a game: "))
-    print("New list created successfully. ")
-    return gameslist
+    while gamesNumber < 2:
+        print("\nYou need more than one game in your list.")
+        numberOfGames = input("\nHow many games do you want to pick from? ")
+        gamesNumber = int(numberOfGames)
 
-def choosegame(listofgames):
-    selectedGame = random.choice(listofgames)
+    for i in range(gamesNumber):
+         gamesList.append(input("Enter a game: "))
+    print("New list created successfully. \n")
+    return gamesList
+
+def chooseGame(listOfGames):
+    selectedGame = random.choice(listOfGames)
     print(selectedGame + " won.")
     return selectedGame
 
 print("Welcome to Poonanji's game selector. For a list of commands, type 'help'.\nFirst, create a new list. ")
-currentlist = newlist()
-while 1 == 1 : 
-        if len(currentlist) < 2:
-            print("You need more than one game in your list.")
-            currentlist = newlist()
-            
-        else:
-            userinput = input("Enter command: ")
+currentList = newList()
+while True:
+    userinput = input("Enter command: ")
 
-            if userinput == "help":
-                print("Here's a list of commands:\nnew\nchoose\nexit" )
+    if userinput.lower() == "help":
+        print("Here's a list of commands:\nnew\nchoose\nexit" )
 
-            elif userinput == "new":
-                currentlist = newlist()
+    elif userinput.lower() == "new":
+        currentList = newList()
 
-            elif userinput == "choose":
-                veto = "y"
-                while veto == "y":
-                    selectedGame = choosegame(currentlist)
-                    veto = input("Does anyone veto " + selectedGame + " ? y/n ")
-                    if veto == "y":
-                            makenewlistquestion = input("Select from a new list? y/n ")
-                            if makenewlistquestion == "y":
-                                currentlist = newlist()
-    
-            elif userinput == "exit":
-                exit()
-        
+    elif userinput.lower() == "choose":
+        veto = 'y'
+        while veto == 'y':
+            selectedGame = chooseGame(currentList)
+            veto = input("Does anyone veto " + selectedGame + " ? y/n ")
+            if veto.lower() == 'y':
+                makeNewListQuestion = input("Select from a new list? y/n ")
+                if makeNewListQuestion.lower() == 'y':
+                    currentList = newList()
 
-
-        
-
-    
-
-
-
-
+    elif userinput == "exit":
+        exit()
