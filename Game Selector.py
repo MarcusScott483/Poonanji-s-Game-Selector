@@ -1,6 +1,10 @@
 import random
 import discord
-TOKEN = ''
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+token = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
@@ -36,7 +40,7 @@ def chooseGame(listOfGames):
     print(selectedGame + " won.")
     return selectedGame
 
-client.run(TOKEN)
+client.run(token)
 print("Welcome to Poonanji's game selector. For a list of commands, type 'help'.\nFirst, create a new list. ")
 currentList = newList()
 while True:
