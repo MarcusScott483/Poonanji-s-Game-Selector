@@ -1,4 +1,20 @@
 import random
+import discord
+TOKEN = ''
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
+client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$choose game'):
+        await message.channel.send('Hello back.')
+
 
 def newList():
     gamesList = []
@@ -20,6 +36,7 @@ def chooseGame(listOfGames):
     print(selectedGame + " won.")
     return selectedGame
 
+client.run(TOKEN)
 print("Welcome to Poonanji's game selector. For a list of commands, type 'help'.\nFirst, create a new list. ")
 currentList = newList()
 while True:
